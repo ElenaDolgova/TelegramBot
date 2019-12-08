@@ -3,7 +3,8 @@ import os
 from flask import Flask
 import requests
 
-TOKEN = "1043775072:AAEp_iiUNllkKGaekaEFwOMGc9TKOoCRrcs"
+TOKEN = "<TOKEN>"
+chat_id = 0;
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 talker_url = "http://127.0.0.1:8000"
@@ -23,7 +24,7 @@ def start(message):
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def echo_message(message):
     # bot.reply_to(message, message.chat.id)
-    if (message.chat.id == -287977201):
+    if (message.chat.id == chat_id):
         if (message.text[0] == 'C'):
             requests.post(talker_url, data=str("У нас Крит! ").encode('utf-8'))
     else:
